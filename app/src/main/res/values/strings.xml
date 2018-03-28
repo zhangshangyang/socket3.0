@@ -3,4 +3,6 @@
     <string name="button">结束</string>
     <string name="button2">开始</string>
     <string name="button3">登入</string>
+    <string name="password">密码</string>
+    <string name="username">用户名</string>
 </resources>

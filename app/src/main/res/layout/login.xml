@@ -11,7 +11,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="16dp"
-        android:hint="用户名"
+        android:hint="@string/username"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -23,7 +23,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
-        android:hint="密码"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
 </LinearLayout>
