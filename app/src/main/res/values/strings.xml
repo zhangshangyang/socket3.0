@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">socket</string>
+    <string name="button">结束</string>
+    <string name="button2">开始</string>
+</resources>
