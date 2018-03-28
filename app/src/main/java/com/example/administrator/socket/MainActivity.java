@@ -75,11 +75,11 @@ class ViewDialogFragment extends DialogFragment {
     }
 }
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements ViewDialogFragment.Callback{
     private WebSocketClient webSocketClient;
     private TextView textView;
     private int state;
-    private String string="ws://192.168.11.103:6341/";
+    private String string="ws://192.168.11.103:6341/"; //IP and port
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showViewDialogFragment(view);
+            public void onClick(View v) {
+                showViewDialogFragment(v);
             }
         });
     }
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             webSocketClient.close();
         }
     }
-   /* public void onClick(String userName, String password) {
+    public void onClick(String userName, String password) {
         Toast.makeText(MainActivity.this, "用户名: " + userName + " 密码: " + password, Toast.LENGTH_SHORT).show();
-    }*/
+    }
 }
