@@ -5,4 +5,5 @@
     <string name="button3">登入</string>
     <string name="password">密码</string>
     <string name="username">用户名</string>
+    <string name="message">message</string>
 </resources>
