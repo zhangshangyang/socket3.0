@@ -22,6 +22,10 @@ import android.widget.Toast;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_10;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -87,10 +91,43 @@ public class MainActivity extends AppCompatActivity  implements ViewDialogFragme
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            textView.setText("");
-            textView.setText(textView.getText() + "\n" + msg.obj);
+            //textView.setText("message:" + "\n" + msg.obj);
+            parseJson((String) msg.obj);
         }
     };
+    @SuppressLint("SetTextI18n")
+    private void parseJson(String strResult){
+        try{
+            JSONTokener jsonTokener = new JSONTokener(strResult);
+            JSONObject person = (JSONObject) jsonTokener.nextValue();
+            //person.getString("Master ID");
+            textView.setText("Master ID:" + person.getString("Master ID"));
+            JSONArray jsonArray = new JSONObject(strResult).getJSONArray("Doubles");
+            //*Double X = (Double) jsonArray.get(0);
+            Double Y = (Double) jsonArray.get(1);
+            Double Z = (Double) jsonArray.get(2);
+            Double R1 = (Double) jsonArray.get(3);
+            Double R3 = (Double) jsonArray.get(4);
+            textView.setText(textView.getText()+"\n"+"X="+jsonArray.get(0));
+            textView.setText(textView.getText()+"\n"+"Y="+jsonArray.get(1));
+            textView.setText(textView.getText()+"\n"+"Z="+jsonArray.get(2));
+            textView.setText(textView.getText()+"\n"+"R1="+jsonArray.get(3));
+            textView.setText(textView.getText()+"\n"+"R3="+jsonArray.get(4));
+         /*   JSONArray jsonArray2 = new JSONObject(strResult).getJSONArray("Booleans");
+            for (int i=0;i<jsonArray2.length();i++){
+                for (int j=0;j<jsonArray2.length();j++){
+                    Double b = (Double) jsonArray.get(i);
+                    textView.setText(textView.getText()+"\n"+"B"+j+":"+jsonArray.get(i));
+                    break;
+                }
+               // Double b = (Double) jsonArray.get(i);
+
+            }*/
+        }catch (JSONException e) {
+            textView.setText("Json pares error");
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
