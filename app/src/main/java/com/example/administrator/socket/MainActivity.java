@@ -104,25 +104,21 @@ public class MainActivity extends AppCompatActivity  implements ViewDialogFragme
             textView.setText("Master ID:" + person.getString("Master ID"));
             JSONArray jsonArray = new JSONObject(strResult).getJSONArray("Doubles");
             //*Double X = (Double) jsonArray.get(0);
-            Double Y = (Double) jsonArray.get(1);
+           /* Double Y = (Double) jsonArray.get(1);
             Double Z = (Double) jsonArray.get(2);
             Double R1 = (Double) jsonArray.get(3);
-            Double R3 = (Double) jsonArray.get(4);
+            Double R3 = (Double) jsonArray.get(4);*/
             textView.setText(textView.getText()+"\n"+"X="+jsonArray.get(0));
             textView.setText(textView.getText()+"\n"+"Y="+jsonArray.get(1));
             textView.setText(textView.getText()+"\n"+"Z="+jsonArray.get(2));
             textView.setText(textView.getText()+"\n"+"R1="+jsonArray.get(3));
             textView.setText(textView.getText()+"\n"+"R3="+jsonArray.get(4));
-         /*   JSONArray jsonArray2 = new JSONObject(strResult).getJSONArray("Booleans");
-            for (int i=0;i<jsonArray2.length();i++){
-                for (int j=0;j<jsonArray2.length();j++){
-                    Double b = (Double) jsonArray.get(i);
-                    textView.setText(textView.getText()+"\n"+"B"+j+":"+jsonArray.get(i));
-                    break;
-                }
-               // Double b = (Double) jsonArray.get(i);
-
-            }*/
+            JSONArray jsonArray2 = new JSONObject(strResult).getJSONArray("Booleans");
+            textView.setText(textView.getText()+"\n"+"X:  MOVE =" +jsonArray2.get(0)+ "  Limit- ="+jsonArray2.get(1)+"   Limit+ ="+jsonArray2.get(2));
+            textView.setText(textView.getText()+"\n"+"Y:  MOVE =" +jsonArray2.get(3)+ "  Limit- ="+jsonArray2.get(4)+"   Limit+ ="+jsonArray2.get(5));
+            textView.setText(textView.getText()+"\n"+"Z:  MOVE =" +jsonArray2.get(6)+ "  Limit- ="+jsonArray2.get(7)+"   Limit+ ="+jsonArray2.get(8));
+            textView.setText(textView.getText()+"\n"+"R1:  MOVE =" +jsonArray2.get(9)+ "  Limit- ="+jsonArray2.get(10)+"  Limit+ ="+jsonArray2.get(11));
+            textView.setText(textView.getText()+"\n"+"R3:  MOVE =" +jsonArray2.get(12)+ "  Limit- ="+jsonArray2.get(13)+"  Limit+ ="+jsonArray2.get(14));
         }catch (JSONException e) {
             textView.setText("Json pares error");
             e.printStackTrace();
